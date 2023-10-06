@@ -1,5 +1,6 @@
 from typing import List
 
+
 from actors.analyser import Analyser
 from actors.clone_finder import CloneFinder
 from actors.investigator import Investigator
@@ -19,12 +20,24 @@ class OriginalDomain:
         self.analyze_clones()
 
     def get_clones(self) -> List[TypoSquat]:
-        return CloneFinder.find_clones(self.dns_twist_link)
+        clones = []
+
+        for domain, ip in CloneFinder.find_clones(self.dns_twist_link):
+            typosquat = TypoSquat(domain, ip)
+            clones.append(typosquat)
+
+            # remove this break to process more that one clone
+            break
+
+        return clones
+
 
     def investigate_clones(self) -> None:
         for clone in self.clones:
             Investigator(clone).investigate()
 
+        print()
+
     def analyze_clones(self) -> None:
         for clone in self.clones:
-            Analyser(clone).categorize()
+            Analyser(clone, self.name).categorize()

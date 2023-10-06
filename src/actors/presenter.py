@@ -9,3 +9,6 @@ class Presenter:
 
     def display(self) -> None:
         pass
+
+    def convert_to_df(self):
+        pass
