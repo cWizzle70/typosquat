@@ -25,3 +25,11 @@ python = "^3.11"
 selenium = "^4.13.0"
 aiohttp = "^3.8.5"
 levenshtein = "^0.22.0"
+black = {extras = ["jupyter"], version = "^23.9.1"}
+
+[tool.black]
+line-length = 140
+target-version = ['py311']
+skip-string-normalization = true
+include = '\.pyi?$'
+exclude = '/venv/'

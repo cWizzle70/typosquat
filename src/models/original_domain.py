@@ -1,6 +1,5 @@
 from typing import List
 
-
 from actors.analyser import Analyser
 from actors.clone_finder import CloneFinder
 from actors.investigator import Investigator
@@ -8,7 +7,6 @@ from models.typosquat import TypoSquat
 
 
 class OriginalDomain:
-
     def __init__(self, name: str, dns_twist_link: str):
         self.name = name
         self.dns_twist_link = dns_twist_link
@@ -30,7 +28,6 @@ class OriginalDomain:
             break
 
         return clones
-
 
     def investigate_clones(self) -> None:
         for clone in self.clones:
